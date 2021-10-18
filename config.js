@@ -1,8 +1,9 @@
 const helpMessage = `
-Welcome to search bot
-use the inline mode below
-@sea_wiki_bot p <search image>
-@sea_wiki_bot w <search wiki>
+Welcome to refer me bot
+use the commands below
+/start to start
+/getlink to get referal links
+/refercount to get referred people count
 `;
 const getReferalLink = (uniqueNumber) =>
     `https://t.me/${process.env.BOT_USERNAME}?start=${uniqueNumber}`;
