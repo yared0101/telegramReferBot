@@ -18,17 +18,20 @@ module.exports = (bot) => {
             );
             let referal_no;
             if (queryResult.length == 0) {
-                const results = await sequelize.query(
-                    "INSERT INTO users(username, user_id, referred_people) VALUES(:username,:user_id,0)",
+                const referal_link = Math.floor(Math.random() * 10000000);
+                console.log(ctx.chat.username);
+                await sequelize.query(
+                    "INSERT INTO users(username, user_id, referred_people,referal_link) VALUES(:username,:user_id,0,:referal_link)",
                     {
                         replacements: {
-                            username: ctx.chat.username,
+                            username: ctx.chat.username || "an",
                             user_id: ctx.chat.id,
+                            referal_link,
                         },
                         type: QueryTypes.INSERT,
                     }
                 );
-                referal_no = results[0];
+                referal_no = referal_link;
             } else {
                 referal_no = queryResult[0].referal_link;
             }
